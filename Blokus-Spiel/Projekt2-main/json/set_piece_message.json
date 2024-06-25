@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "title": "Net game set piece message",
+  "required": [
+    "pieceCoords",
+    "gameBoard",
+    "piece",
+    "color"
+  ],
+  "properties": {
+    "pieceCoords": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/coordinates"
+      }
+    },
+    "gameBoard": {
+      "oneOf": [
+        {
+          "type": "array",
+          "minItems": 14,
+          "maxItems": 14,
+          "items": {
+            "type": "array",
+            "minItems": 14,
+            "maxItems": 14,
+            "items": {
+              "$ref": "#/definitions/blokusColor"
+            }
+          }
+        },
+        {
+          "type": "array",
+          "minItems": 20,
+          "maxItems": 20,
+          "items": {
+            "type": "array",
+            "minItems": 20,
+            "maxItems": 20,
+            "items": {
+              "$ref": "#/definitions/blokusColor"
+            }
+          }
+        }
+      ]
+    },
+    "piece": {
+      "$ref": "#/definitions/blokusPiece"
+    },
+    "color": {
+      "type": "string",
+      "enum": [
+        "RED",
+        "BLUE",
+        "YELLOW",
+        "GREEN",
+        "BLANK"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "coordinates": {
+      "type": "object",
+      "required": [
+        "first",
+        "second"
+      ],
+      "properties": {
+        "first": {
+          "type": "integer"
+        },
+        "second": {
+          "type": "integer"
+        }
+      }
+    },
+    "blokusColor": {
+      "type": "string",
+      "enum": [
+        "RED",
+        "BLUE",
+        "YELLOW",
+        "GREEN",
+        "BLANK"
+      ]
+    },
+    "blokusPiece": {
+      "type": "string",
+      "enum": [
+        "ONE_ONE",
+        "TWO_ONE",
+        "THREE_ONE",
+        "THREE_TWO",
+        "FOUR_ONE",
+        "FOUR_TWO",
+        "FOUR_THREE",
+        "FOUR_FOUR",
+        "FOUR_FIVE",
+        "FIVE_ONE",
+        "FIVE_TWO",
+        "FIVE_THREE",
+        "FIVE_FOUR",
+        "FIVE_FIVE",
+        "FIVE_SIX",
+        "FIVE_SEVEN",
+        "FIVE_EIGHT",
+        "FIVE_NINE",
+        "FIVE_TEN",
+        "FIVE_ELEVEN",
+        "FIVE_TWELVE",
+        "PASSED"
+      ]
+    }
+  }
+}

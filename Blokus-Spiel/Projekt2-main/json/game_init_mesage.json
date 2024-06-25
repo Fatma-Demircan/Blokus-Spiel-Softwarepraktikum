@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "title": "Net game initialization message",
+  "required": [
+    "twoPlayerVariant",
+    "turnOrder"
+  ],
+  "properties": {
+    "twoPlayerVariant": {
+      "type": "boolean"
+    },
+    "turnOrder": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/playerTuple"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "playerTuple": {
+      "type": "object",
+      "required": [
+        "first",
+        "second"
+      ],
+      "properties": {
+        "first": {
+          "type": "string"
+        },
+        "second": {
+          "type": "string",
+          "enum": [
+            "RED",
+            "BLUE",
+            "YELLOW",
+            "GREEN",
+            "BLANK"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
